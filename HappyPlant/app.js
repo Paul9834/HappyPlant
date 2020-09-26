@@ -1,13 +1,19 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
 
-var app = express();
+const app = express();
+
+
+/**
+ * importar dbmanager
+*/
+const dbManager = require ("./dataBase/db.manager");
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,6 +27,24 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+
+dbManager.sequelizeConnection.authenticate().then(
+  () => {
+      console.log("***** Connection has been stablished *******");
+      dbManager.sequelizeConnection.sync ().then(
+          () => {
+              console.log ("Database Synced");
+          }
+      );
+  }
+).catch(
+  err => {
+      console.log("Unable to connect to the database...", err)
+  }
+);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
