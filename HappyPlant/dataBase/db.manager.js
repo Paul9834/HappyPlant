@@ -9,6 +9,7 @@ const sequelizeConnection = require("./db.connection");
  */
 
 const PropietarioModel = require("../models/propietario.model");
+const DispositivoModel = require("../models/dispositivo.model");
 
 
 /**
@@ -16,6 +17,9 @@ const PropietarioModel = require("../models/propietario.model");
  */
 
  const Propietario = PropietarioModel(sequelizeConnection, Sequelize);
+
+ const Dispositivo = DispositivoModel(sequelizeConnection, Sequelize);
+
 
 /**
  * Relaciones
@@ -32,6 +36,7 @@ const PropietarioModel = require("../models/propietario.model");
 
   const db = {
       Propietario,
+      Dispositivo,
       sequelizeConnection
   }
 
