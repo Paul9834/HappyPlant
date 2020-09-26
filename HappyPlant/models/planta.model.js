@@ -2,37 +2,25 @@ var DataTypes = require('sequelize/lib/data-types');
 
 module.exports = (sequelize, Sequelize) => {
 
-    const Propietario = sequelize.define(
-        "propietarios",
+    const Planta = sequelize.define(
+        "plantas",
         {
-            idPropietario: {
+            idPlanta: {
                 type: DataTypes.INTEGER,
                 primaryKey: true,
                 unique: true,
                 autoIncrement: true,
                 allowNull: false
             },
-            nombrePropietario: {
+            nombrePlanta: {
                 type: DataTypes.STRING,
                 allowNull: false
             },
-            fechaRegistro: {
-                type: DataTypes.DATE(0),
-                allowNull: false
-            },
-            fotoPerfil: {
+            fotoPlanta: {
                 type: DataTypes.BLOB("long"),
                 //allowNull: false
             },
-            email:{
-                type: DataTypes.STRING,
-                allowNull: false
-            },
-            usuario:{
-                type: DataTypes.STRING,
-                allowNull: false
-            },
-            pass:{
+            especie:{
                 type: DataTypes.STRING,
                 allowNull: false
             }
@@ -41,8 +29,8 @@ module.exports = (sequelize, Sequelize) => {
             timestamps: false
         },
         {
-            tableName: "propietarios"
+            tableName: "plantas"
         }
     );
-        return Propietario;
+        return Planta;
 }

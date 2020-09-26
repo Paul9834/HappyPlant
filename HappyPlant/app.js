@@ -28,7 +28,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-
+/**
+ * conexion y creación DB
+ */
 dbManager.sequelizeConnection.authenticate().then(
   () => {
       console.log("***** Connection has been stablished *******");

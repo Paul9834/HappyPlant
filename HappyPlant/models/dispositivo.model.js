@@ -3,7 +3,7 @@ var DataTypes = require('sequelize/lib/data-types');
 module.exports = (sequelize, Sequelize) => {
 
     const Dispositivo = sequelize.define(
-        "dispositivo",
+        "dispositivos",
         {
             idDispositivo: {
                 type: DataTypes.INTEGER,

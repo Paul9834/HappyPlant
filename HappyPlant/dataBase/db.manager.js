@@ -10,7 +10,7 @@ const sequelizeConnection = require("./db.connection");
 
 const PropietarioModel = require("../models/propietario.model");
 const DispositivoModel = require("../models/dispositivo.model");
-
+const PlantaModel = require("../models/planta.model")
 
 /**
  * crear modelos
@@ -20,13 +20,15 @@ const DispositivoModel = require("../models/dispositivo.model");
 
  const Dispositivo = DispositivoModel(sequelizeConnection, Sequelize);
 
+ const Planta = PlantaModel(sequelizeConnection, Sequelize);
 
 /**
  * Relaciones
  */
+Propietario.hasMany(Planta, {foreingKey:"idPlanta"});
 
- //tabla.hasMany(tabla2, {foreingKey: "idt2", sourceKey: "idt1"});
- //tabla2.belongsto(tabla1, {foreingKey: "idt1", sourceKey: "idt2"});
+Planta.belongsTo(Propietario, {sourceKey:"idPlanta"});
+
 
 
 
@@ -37,6 +39,7 @@ const DispositivoModel = require("../models/dispositivo.model");
   const db = {
       Propietario,
       Dispositivo,
+      Planta,
       sequelizeConnection
   }
 
