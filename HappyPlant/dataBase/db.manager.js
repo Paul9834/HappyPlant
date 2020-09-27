@@ -25,11 +25,17 @@ const PlantaModel = require("../models/planta.model")
 /**
  * Relaciones
  */
-Propietario.hasMany(Planta, {foreingKey:"idPlanta"});
+Propietario.hasMany(Planta, { 
+    foreignKey: {
+        field: 'idPropietario',
+        allowNull: false
+    },
+    onDelete : 'CASCADE'
+});
 
-Planta.belongsTo(Propietario, {sourceKey:"idPlanta"});
-
-
+Planta.belongsTo (Propietario, {
+    sourceKey: 'idPropietario'
+});
 
 
  /**

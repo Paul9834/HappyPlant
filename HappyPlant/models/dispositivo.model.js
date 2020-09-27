@@ -3,7 +3,7 @@ var DataTypes = require('sequelize/lib/data-types');
 module.exports = (sequelize, Sequelize) => {
 
     const Dispositivo = sequelize.define(
-        "dispositivos",
+        "Dispositivo",
         {
             idDispositivo: {
                 type: DataTypes.INTEGER,
@@ -30,10 +30,8 @@ module.exports = (sequelize, Sequelize) => {
             }
         },
         {
+            tableName: "dispositivos",
             timestamps: false
-        },
-        {
-            tableName: "dispositivos"
         }
     );
         return Dispositivo;
