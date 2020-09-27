@@ -1,4 +1,5 @@
 const { response } = require("../app");
+const { Propietario } = require("../dataBase/db.manager");
 const dbManager = require("../dataBase/db.manager");
 
 
@@ -103,7 +104,40 @@ async function buscarPropietarioPorId(req, res){
     }
 }
 
+/**
+ * Elimina un propietario por su idPropietario
+ * @param {*} req idPropietario
+ * @param {*} res Mensaje informativo
+ */
+async function eliminarPropietarioPorId(req, res){
+
+    try{
+
+        const {idPropietario} = req.params;
+
+        await Propietario.destroy({
+            where: {
+              idPropietario: idPropietario
+            }
+        });
+
+        res.send(
+            {
+                message: "Propietario Eliminado"
+            }
+        );
+
+    }catch(error){
+        res.status(500).send(
+            {
+                message: "Erro en servidor al eliminar Propietario"
+            }
+        );
+    }
+
+}
 
 exports.crearPropietario = crearPropietario;
 exports.devolverPropietarios = devolverPropietarios;
 exports.buscarPropietarioPorId = buscarPropietarioPorId;
+exports.eliminarPropietarioPorId = eliminarPropietarioPorId;

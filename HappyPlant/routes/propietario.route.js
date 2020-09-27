@@ -17,5 +17,6 @@ router.get('/', propietarioController.devolverPropietarios);
 
 router.get('/:idPropietario', propietarioController.buscarPropietarioPorId);
 
+router.delete('/:idPropietario',propietarioController.eliminarPropietarioPorId);
 
 module.exports = router;
