@@ -15,4 +15,7 @@ router.post('/', propietarioController.crearPropietario);
 
 router.get('/', propietarioController.devolverPropietarios);
 
+router.get('/:idPropietario', propietarioController.buscarPropietarioPorId);
+
+
 module.exports = router;

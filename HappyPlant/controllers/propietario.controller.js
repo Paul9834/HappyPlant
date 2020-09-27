@@ -50,7 +50,11 @@ function crearPropietario (req, res){
 }
 
 
-
+/**
+ * Lista todos los propietarios
+ * @param {*} req petición
+ * @param {*} res: retorna un objeto Json con todos los propietarios
+ */
 async function devolverPropietarios(req, res){
 
     try {
@@ -70,5 +74,36 @@ async function devolverPropietarios(req, res){
     }
 }
 
+
+/**
+ * Busca un Propietario por su campo idPropietario
+ * @param {*} req: idPropietario que se desea buscar
+ * @param {*} res: Objeto Json con datos del Propietario encontrado
+ */
+async function buscarPropietarioPorId(req, res){
+
+    try {
+
+        const {idPropietario} = req.params;
+
+        const propietario = await dbManager.Propietario.findOne(
+            {
+                where: {
+                    idPropietario: idPropietario
+                }
+            }
+        );
+        res.json(propietario);
+    } catch (error) {
+        res.status(500).send(
+            {
+                message: "Error en servidor al buscar Propietario"
+            }
+        );
+    }
+}
+
+
 exports.crearPropietario = crearPropietario;
 exports.devolverPropietarios = devolverPropietarios;
+exports.buscarPropietarioPorId = buscarPropietarioPorId;
