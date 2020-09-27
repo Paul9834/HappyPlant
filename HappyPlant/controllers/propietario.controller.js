@@ -1,6 +1,12 @@
 const { response } = require("../app");
 const dbManager = require("../dataBase/db.manager");
 
+
+/**
+ * Crea un propietario en la base de datos y lo retorna
+ * @param {*} req : objeto json con atributos para nuevo propietario
+ * @param {*} res : crea la consultar sql e inserta el nuevo registro, adicional retorna el objeto creado
+ */
 function crearPropietario (req, res){
 
     /**
@@ -43,4 +49,26 @@ function crearPropietario (req, res){
     }
 }
 
+
+
+async function devolverPropietarios(req, res){
+
+    try {
+
+        const propietarios = await dbManager.Propietario.findAll();
+        res.json(
+            {
+                data: propietarios
+            }
+        );
+    } catch (error) {
+        res.status(500).send(
+            {
+                message: "Error en servidor al listar Propietarios"
+            }
+        );
+    }
+}
+
 exports.crearPropietario = crearPropietario;
+exports.devolverPropietarios = devolverPropietarios;

@@ -26,11 +26,13 @@ module.exports = (sequelize, Sequelize) => {
             },
             email:{
                 type: DataTypes.STRING,
-                allowNull: false
+                allowNull: false,
+                unique: true
             },
             usuario:{
                 type: DataTypes.STRING,
-                allowNull: false
+                allowNull: false,
+                unique: true,
             },
             pass:{
                 type: DataTypes.STRING,

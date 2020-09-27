@@ -13,4 +13,6 @@ const router = express.Router();
 /* GET users listing. */
 router.post('/', propietarioController.crearPropietario);
 
+router.get('/', propietarioController.devolverPropietarios);
+
 module.exports = router;
