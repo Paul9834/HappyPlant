@@ -91,6 +91,7 @@ RegistroDatos.belongsTo (Dispositivo, {
       Propietario,
       Dispositivo,
       Planta,
+      RegistroDatos,
       sequelizeConnection
   }
 

@@ -6,7 +6,7 @@ const router = express.Router();
  * importar controladores
  */
 
- const propietarioController = require("../controllers/propietario.controller");
+const propietarioController = require("../controllers/propietario.controller");
 
 
 
@@ -17,6 +17,8 @@ router.get('/', propietarioController.devolverPropietarios);
 
 router.get('/:idPropietario', propietarioController.buscarPropietarioPorId);
 
-router.delete('/:idPropietario',propietarioController.eliminarPropietarioPorId);
+router.delete('/:idPropietario', propietarioController.eliminarPropietarioPorId);
+/* Actualizar Dispositivo por ID*/
+router.put('/:idPropietario', propietarioController.actualizarPropietarioPorId);
 
 module.exports = router;
