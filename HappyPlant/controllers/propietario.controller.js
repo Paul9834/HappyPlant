@@ -1,7 +1,6 @@
 const { response } = require("../app");
 const { Propietario } = require("../dataBase/db.manager");
 const dbManager = require("../dataBase/db.manager");
-const { actualizarDispositivoPorID } = require("./dispositivo.controller");
 
 
 /**
