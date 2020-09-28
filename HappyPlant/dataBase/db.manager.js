@@ -45,7 +45,7 @@ Propietario.hasMany(Planta, {
 
 
 Planta.belongsTo (Propietario, {
-    foreignKey:'idReligion',
+    foreignKey:'idPropietario',
     onDelete : 'CASCADE',
 });
 

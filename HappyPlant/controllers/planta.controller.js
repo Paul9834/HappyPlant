@@ -58,7 +58,7 @@ async function devolverPlanta(req, res){
 
     try {
 
-        const planta = await dbManager.planta.findAll();
+        const planta = await dbManager.Planta.findAll();
         res.json(
             {
                 data: planta
