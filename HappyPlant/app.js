@@ -9,6 +9,7 @@ const indexRouter = require('./routes/index');
 const propietarioRouter = require('./routes/propietario.route');
 const dispositivoRouter = require('./routes/dispositivo.route');
 const registroDatosRouter = require('./routes/registroDatos.route');
+const plantaRouter = require('./routes/planta.route');
 
 
 const app = express();
@@ -33,7 +34,7 @@ app.use('/', indexRouter);
 app.use('/propietarios', propietarioRouter);
 app.use('/dispositivos',dispositivoRouter);
 app.use('/registroD', registroDatosRouter);
-
+app.use('/planta', plantaRouter);
 /**
  * conexion y creación DB
  */

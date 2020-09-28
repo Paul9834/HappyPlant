@@ -35,52 +35,51 @@ const RegistroDatosModel = require("../models/registroDatos.model")
  * Relaciones
  */
 
- //relacion propietario-planta
+
+
+//relacion propietario-planta
 Propietario.hasMany(Planta, { 
-    foreignKey: {
-        field: 'idPropietario',
-        allowNull: false
-    },
-    onDelete : 'CASCADE'
+    foreignKey: 'idPropietario',
+    onDelete : 'CASCADE',
 });
+
 
 Planta.belongsTo (Propietario, {
-    sourceKey: 'idPropietario'
+    foreignKey:'idReligion',
+    onDelete : 'CASCADE',
 });
 
-//Relacion planta-registro _ dispositivo-registro
 
+
+/**
+ * Relacion planta-registro _ dispositivo-registro
+ */
+
+
+//Relacion planta-Registro
 Planta.hasMany(RegistroDatos, { 
-    foreignKey: {
-        field: 'idPlanta',
-        allowNull: false
-    },
-    onDelete : 'CASCADE'
+    foreignKey: 'idPlanta',
+    onDelete : 'CASCADE',
 });
+
 
 RegistroDatos.belongsTo (Planta, {
-    sourceKey: 'idPlanta'
+    foreignKey:'idPlanta',
+    onDelete : 'CASCADE',
 });
 
 
+//Relacion dispositivo-Registro
 Dispositivo.hasMany(RegistroDatos, { 
-    foreignKey: {
-        field: 'idDispositivo',
-        allowNull: false
-    },
-    onDelete : 'CASCADE'
+    foreignKey: 'idDispositivo',
+    onDelete : 'CASCADE',
 });
+
 
 RegistroDatos.belongsTo (Dispositivo, {
-    sourceKey: 'idDispositivo'
+    foreignKey:'idDispositivo',
+    onDelete : 'CASCADE',
 });
-
-
-
-
-
-
-
 
 
  /**

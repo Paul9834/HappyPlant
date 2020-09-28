@@ -95,7 +95,12 @@ async function buscarPropietarioPorId(req, res){
                 }
             }
         );
-        res.json(propietario);
+
+        if(!propietario){
+            res.send("El propietario no existe")
+        }else{
+            res.json(propietario);
+        }
     } catch (error) {
         res.status(500).send(
             {
@@ -116,22 +121,31 @@ async function eliminarPropietarioPorId(req, res){
 
         const {idPropietario} = req.params;
 
-        await Propietario.destroy({
-            where: {
-              idPropietario: idPropietario
-            }
-        });
-
-        res.send(
+        const propietario = await dbManager.Propietario.findOne(
             {
-                message: "Propietario Eliminado"
+                where: {
+                    idPropietario: idPropietario
+                }
             }
         );
+
+        if(!propietario){
+            res.send("El propietario no existe")
+        }else{
+            await Propietario.destroy({
+                where: {
+                  idPropietario: idPropietario
+                }
+            });
+            res.send("Propietario eliminado")
+        }
+
+
 
     }catch(error){
         res.status(500).send(
             {
-                message: "Error en servidor al eliminar Propietario"
+                message: "El propietario que desea eliminar no existe"
             }
         );
     }
