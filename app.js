@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 //Importar rutas
-const indexRouter = require('./routes/index');
+const indexRouter = require('./routes');
 const propietarioRouter = require('./routes/propietario.route');
 const dispositivoRouter = require('./routes/dispositivo.route');
 const registroDatosRouter = require('./routes/registroDatos.route');
