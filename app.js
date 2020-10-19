@@ -4,11 +4,15 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+//Importar rutas
+const indexRouter = require('./routes');
+const propietarioRouter = require('./routes/propietario.route');
+const dispositivoRouter = require('./routes/dispositivo.route');
+const registroDatosRouter = require('./routes/registroDatos.route');
+const plantaRouter = require('./routes/planta.route');
+
 
 const app = express();
-
 
 /**
  * importar dbmanager
@@ -25,9 +29,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Usar rutas
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-
+app.use('/propietarios', propietarioRouter);
+app.use('/dispositivos',dispositivoRouter);
+app.use('/registroD', registroDatosRouter);
+app.use('/planta', plantaRouter);
 /**
  * conexion y creación DB
  */
