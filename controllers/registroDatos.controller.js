@@ -25,6 +25,8 @@ function crearRegistroDatos (req, res){
          */
         const newRegistroDatosObject = {
             fechaRegistro: req.body.fechaRegistro,
+            idDispositivo: req.body.idDispositivo,
+            idPlanta: req.body.idPlanta
         }
 
         /**
