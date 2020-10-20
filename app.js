@@ -11,6 +11,7 @@ const dispositivoRouter = require('./routes/dispositivo.route');
 const registroDatosRouter = require('./routes/registroDatos.route');
 const plantaRouter = require('./routes/planta.route');
 
+const cors = require('cors')
 
 const app = express();
 
@@ -18,6 +19,8 @@ const app = express();
  * importar dbmanager
 */
 const dbManager = require ("./dataBase/db.manager");
+
+app.use(cors())
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
