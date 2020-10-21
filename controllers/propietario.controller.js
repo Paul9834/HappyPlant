@@ -123,7 +123,7 @@ async function buscarPropietarioPorUsername(req, res){
         const propietario = await dbManager.Propietario.findOne(
             {
                 where: {
-                    username: username
+                    usuario: username
                 }
             }
         );
