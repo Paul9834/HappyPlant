@@ -17,7 +17,7 @@ router.get('/', propietarioController.devolverPropietarios);
 
 router.get('/:idPropietario', propietarioController.buscarPropietarioPorId);
 
-router.get('log/:username', propietarioController.buscarPropietarioPorUsername);
+router.get('/log/:username', propietarioController.buscarPropietarioPorUsername);
 
 router.delete('/:idPropietario', propietarioController.eliminarPropietarioPorId);
 /* Actualizar Dispositivo por ID*/
