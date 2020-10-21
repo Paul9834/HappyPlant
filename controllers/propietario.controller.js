@@ -110,6 +110,41 @@ async function buscarPropietarioPorId(req, res){
 }
 
 /**
+ * Busca un Propietario por su campo username
+ * @param {*} req: username que se desea buscar
+ * @param {*} res: Objeto Json con datos del Propietario encontrado
+ */
+async function buscarPropietarioPorUsername(req, res){
+
+    try {
+
+        const {username} = req.params;
+
+        const propietario = await dbManager.Propietario.findOne(
+            {
+                where: {
+                    username: username
+                }
+            }
+        );
+
+        if(!propietario){
+            res.send("El propietario no existe")
+        }else{
+            res.json(propietario);
+        }
+    } catch (error) {
+        res.status(500).send(
+            {
+                message: "Error en servidor al buscar Propietario"
+            }
+        );
+    }
+}
+
+
+
+/**
  * Elimina un propietario por su idPropietario
  * @param {*} req idPropietario
  * @param {*} res Mensaje informativo
@@ -187,5 +222,6 @@ async function actualizarPropietarioPorId(req, res) {
 exports.crearPropietario = crearPropietario;
 exports.devolverPropietarios = devolverPropietarios;
 exports.buscarPropietarioPorId = buscarPropietarioPorId;
+exports.buscarPropietarioPorUsername = buscarPropietarioPorUsername;
 exports.eliminarPropietarioPorId = eliminarPropietarioPorId;
 exports.actualizarPropietarioPorId = actualizarPropietarioPorId;
