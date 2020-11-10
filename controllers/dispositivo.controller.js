@@ -62,9 +62,9 @@ async function devolverDispositivos(req, res) {
     try {
 
         const dispositivos = await dbManager.Dispositivo.findAll();
-        res.json({
-            data: dispositivos
-        });
+        res.json(
+            dispositivos
+        );
     } catch (error) {
         res.status(500).send({
             message: "Error en servidor al listar Dispositivos"
@@ -141,10 +141,10 @@ async function actualizarDispositivoPorId(req, res) {
         } = req.params;
         Dispositivo
             .update({
-            humedadAmbiente: req.body.humedadAmbiente,
-            temperaturaAmbiente: req.body.temperaturaAmbiente,
-            humedadTierra: req.body.humedadTierra,
-            longitud: req.body.longitud,
+                humedadAmbiente: req.body.humedadAmbiente,
+                temperaturaAmbiente: req.body.temperaturaAmbiente,
+                humedadTierra: req.body.humedadTierra,
+                longitud: req.body.longitud,
             }, {
                 where: {
                     idDispositivo: idDispositivo
