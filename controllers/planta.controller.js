@@ -113,7 +113,7 @@ async function buscarPlantasPorPropietario(req, res){
 
         const {idPropietario} = req.params;
 
-        const plantas = await dbManager.Planta.findOne(
+        const plantas = await dbManager.Planta.findAll(
             {
                 where: {
                     idPropietario: idPropietario
