@@ -7,6 +7,9 @@ const {
 const dbManager = require("../dataBase/db.manager");
 
 
+
+
+
 /**
  * Crea un dispositivo en la base de datos y lo retorna
  * @param {*} req : objeto json con atributos para nuevo dispositivo
