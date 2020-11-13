@@ -21,7 +21,7 @@ module.exports = (sequelize, Sequelize) => {
                 allowNull: false
             },
             fotoPerfil: {
-                type: DataTypes.BLOB("long"),
+                type: DataTypes.STRING,
                 //allowNull: false
             },
             email:{
