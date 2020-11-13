@@ -103,6 +103,34 @@ async function buscarPlantaPorId(req, res){
 }
 
 /**
+ * Busca una planta por su campo idPropietario
+ * @param {*} req: idPropietario que se desea buscar
+ * @param {*} res: Objeto Json con datos de la planta encontrada
+ */
+async function buscarPlantasPorPropietario(req, res){
+
+    try {
+
+        const {idPropietario} = req.params;
+
+        const plantas = await dbManager.Planta.findOne(
+            {
+                where: {
+                    idPropietario: idPropietario
+                }
+            }
+        );
+        res.json(plantas);
+    } catch (error) {
+        res.status(500).send(
+            {
+                message: "Error en servidor al buscar Plantas"
+            }
+        );
+    }
+}
+
+/**
  * Elimina una planta por su idPlanta
  * @param {*} req idPlanta
  * @param {*} res Mensaje informativo
@@ -173,3 +201,4 @@ exports.devolverPlanta = devolverPlanta;
 exports.buscarPlantaPorId = buscarPlantaPorId;
 exports.eliminarPlantaPorId = eliminarPlantaPorId;
 exports.actualizarPlantaPorId = actualizarPlantaPorId;
+exports.buscarPlantasPorPropietario = buscarPlantasPorPropietario;
