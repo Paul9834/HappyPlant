@@ -19,4 +19,7 @@ router.delete('/:idPlanta', plantaController.eliminarPlantaPorId);
 /* Actualizar Planta  por ID*/
 router.put('/:idPlanta', plantaController.actualizarPlantaPorId);
 
+/* Mostrar plantas por propietario*/
+router.get('/getByUser/:idPropietario', plantaController.buscarPlantasPorPropietario);
+
 module.exports = router;

@@ -1,5 +1,9 @@
-const { response } = require("../app");
-const { RegistroDatos } = require("../dataBase/db.manager");
+const {
+    response
+} = require("../app");
+const {
+    RegistroDatos
+} = require("../dataBase/db.manager");
 const dbManager = require("../dataBase/db.manager");
 
 
@@ -8,17 +12,17 @@ const dbManager = require("../dataBase/db.manager");
  * @param {*} req : objeto json con atributos para nuevo registroDatos
  * @param {*} res : crea la consultar sql e inserta el nuevo registro, adicional retorna el objeto creado
  */
-function crearRegistroDatos (req, res){
+function crearRegistroDatos(req, res) {
 
     /**
      * validar request vacio
      */
-    if(!req.body){
+    if (!req.body) {
         response.status(400).send({
             message: "Body vacio!!!"
         });
         return;
-    }else{
+    } else {
 
         /**
          * creacion objeto con datos de entrada
@@ -53,22 +57,17 @@ function crearRegistroDatos (req, res){
  * @param {*} req petición
  * @param {*} res: retorna un objeto Json con todos los propietarios
  */
-async function devolverRegistroDatos(req, res){
+async function devolverRegistroDatos(req, res) {
 
     try {
-
         const registroDatos = await dbManager.RegistroDatos.findAll();
         res.json(
-            {
-                data: registroDatos
-            }
+            registroDatos
         );
     } catch (error) {
-        res.status(500).send(
-            {
-                message: "Error en servidor al listar RegistroDatos"
-            }
-        );
+        res.status(500).send({
+            message: "Error en servidor al listar RegistroDatos"
+        });
     }
 }
 
@@ -78,26 +77,24 @@ async function devolverRegistroDatos(req, res){
  * @param {*} req: idRegistro que se desea buscar
  * @param {*} res: Objeto Json con datos del RegistroDatos encontrado
  */
-async function buscarRegistroDatosPorId(req, res){
+async function buscarRegistroDatosPorId(req, res) {
 
     try {
 
-        const { idRegistro } = req.params;
+        const {
+            idRegistro
+        } = req.params;
 
-        const registroDatos = await dbManager.RegistroDatos.findOne(
-            {
-                where: {
-                    idRegistro : idRegistro 
-                }
+        const registroDatos = await dbManager.RegistroDatos.findOne({
+            where: {
+                idRegistro: idRegistro
             }
-        );
+        });
         res.json(registroDatos);
     } catch (error) {
-        res.status(500).send(
-            {
-                message: "Error en servidor al buscar RegistroDatos"
-            }
-        );
+        res.status(500).send({
+            message: "Error en servidor al buscar RegistroDatos"
+        });
     }
 }
 
@@ -106,30 +103,28 @@ async function buscarRegistroDatosPorId(req, res){
  * @param {*} req idRegistro
  * @param {*} res Mensaje informativo
  */
-async function eliminarRegistroDatosPorId(req, res){
+async function eliminarRegistroDatosPorId(req, res) {
 
-    try{
+    try {
 
-        const { idRegistro } = req.params;
+        const {
+            idRegistro
+        } = req.params;
 
         await RegistroDatos.destroy({
             where: {
-              idRegistro: idRegistro
+                idRegistro: idRegistro
             }
         });
 
-        res.send(
-            {
-                message: "RegistroDatos Eliminado"
-            }
-        );
+        res.send({
+            message: "RegistroDatos Eliminado"
+        });
 
-    }catch(error){
-        res.status(500).send(
-            {
-                message: "Error en servidor al eliminar RegistroDatos"
-            }
-        );
+    } catch (error) {
+        res.status(500).send({
+            message: "Error en servidor al eliminar RegistroDatos"
+        });
     }
 
 }
