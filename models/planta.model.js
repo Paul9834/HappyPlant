@@ -17,7 +17,7 @@ module.exports = (sequelize, Sequelize) => {
                 allowNull: false
             },
             fotoPlanta: {
-                type: DataTypes.BLOB("long"),
+                type: DataTypes.STRING,
                 //allowNull: false
             },
             especie:{
