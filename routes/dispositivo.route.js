@@ -9,7 +9,7 @@ const dispositivoController = require("../controllers/dispositivo.controller");
 
 
 /* Crear Dispositivo */
-router.post('/', dispositivoController.crearDispositivo);
+router.post('/', dispositivoController.checkk);
 /* Mostrar Dispositivos */
 router.get('/', dispositivoController.devolverDispositivos);
 /* Mostrar Dispositivo por ID*/
