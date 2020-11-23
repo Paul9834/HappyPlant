@@ -99,6 +99,32 @@ async function buscarRegistroDatosPorId(req, res) {
 }
 
 /**
+ * Busca un RegistroDatos por su campo idPlanta
+ * @param {*} req: idPlanta que se desea buscar
+ * @param {*} res: Objeto Json con datos del RegistroDatos encontrado
+ */
+async function buscarRegistrosPorPlanta(req, res) {
+
+    try {
+
+        const {
+            idPlanta
+        } = req.params;
+
+        const registroDatos = await dbManager.RegistroDatos.findAll({
+            where: {
+                idPlanta: idPlanta
+            }
+        });
+        res.json(registroDatos);
+    } catch (error) {
+        res.status(500).send({
+            message: "Error en servidor al buscar RegistroDatos"
+        });
+    }
+}
+
+/**
  * Elimina un RegistroDatos por su idRegistro
  * @param {*} req idRegistro
  * @param {*} res Mensaje informativo
@@ -133,3 +159,4 @@ exports.crearRegistroDatos = crearRegistroDatos;
 exports.devolverRegistroDatos = devolverRegistroDatos;
 exports.buscarRegistroDatosPorId = buscarRegistroDatosPorId;
 exports.eliminarRegistroDatosPorId = eliminarRegistroDatosPorId;
+exports.buscarRegistrosPorPlanta = buscarRegistrosPorPlanta;
