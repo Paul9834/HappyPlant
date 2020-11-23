@@ -16,5 +16,7 @@ router.get('/', registroDatosController.devolverRegistroDatos);
 router.get('/:idDispositivo', registroDatosController.buscarRegistroDatosPorId);
 /* Eliminar RegistroDatos por ID */
 router.delete('/:idDispositivo', registroDatosController.eliminarRegistroDatosPorId);
+/* Buscar RegistroDatos por ID planta*/
+router.get('/planta/:idPlanta', registroDatosController.buscarRegistrosPorPlanta);
 
 module.exports = router;
