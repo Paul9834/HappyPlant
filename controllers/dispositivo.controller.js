@@ -8,7 +8,8 @@ const dbManager = require("../dataBase/db.manager");
 
 
 var mqtt = require('mqtt');
-var Topic = 'paul9834'; //subscribe to all topics
+var Topic = 'temperature';
+
 var Broker_URL = 'mqtt://broker.mqttdashboard.com';
 
 var options = {
@@ -21,27 +22,28 @@ var client  = mqtt.connect(Broker_URL, options);
 client.on('connect', mqtt_connect);
 client.on('message', mqtt_messsageReceived);
 
-var messageData = "No data"
-
 function mqtt_connect() {
     console.log("Connecting MQTT");
     client.subscribe(Topic, mqtt_subscribe);
 }
 
-function mqtt_subscribe(err, granted)
-{
+function mqtt_subscribe(err, granted) {
     console.log("Subscribed to " + Topic);
     if (err) {console.log(err);}
 }
 
 function mqtt_messsageReceived(topic, message, packet) {
     console.log('Topic=' +  topic + '  Message=' + message);
-    messageData = message
 }
 
-function checkk(req, res) {
+function consultarHumedad(req, res) {
     res.send(messageData);
 }
+
+function consultarTemperatura(req, res) {
+    res.send(messageData);
+}
+
 
 
 
@@ -210,5 +212,4 @@ exports.buscarDispositivoPorId = buscarDispositivoPorId;
 exports.eliminarDispositivoPorId = eliminarDispositivoPorId;
 exports.actualizarDispositivoPorID = actualizarDispositivoPorId;
 exports.mqtt_connect = mqtt_connect;
-exports.mqtt_messsageReceived = mqtt_messsageReceived;
-exports.checkk = checkk;
+exports.checkk = consultarTemperatura;
