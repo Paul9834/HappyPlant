@@ -8,10 +8,11 @@ const dbManager = require("../dataBase/db.manager");
 
 
 var mqtt = require('mqtt');
-var Topic = 'temperature';
 
+
+
+var Topic = 'happyPlant/Temperature/Liz1';
 var Broker_URL = 'mqtt://broker.mqttdashboard.com';
-
 var options = {
     clientId: 'clientId-i4LUhhtzRf',
     port: 8000,
@@ -21,6 +22,8 @@ var options = {
 var client  = mqtt.connect(Broker_URL, options);
 client.on('connect', mqtt_connect);
 client.on('message', mqtt_messsageReceived);
+
+var messageData = " ";
 
 function mqtt_connect() {
     console.log("Connecting MQTT");
@@ -34,6 +37,7 @@ function mqtt_subscribe(err, granted) {
 
 function mqtt_messsageReceived(topic, message, packet) {
     console.log('Topic=' +  topic + '  Message=' + message);
+    messageData = message;
 }
 
 function consultarHumedad(req, res) {
@@ -43,10 +47,6 @@ function consultarHumedad(req, res) {
 function consultarTemperatura(req, res) {
     res.send(messageData);
 }
-
-
-
-
 
 
 /**
